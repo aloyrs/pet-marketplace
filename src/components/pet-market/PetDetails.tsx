@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Pet, InquiryResponse } from "@/types";
+import { InquiryForm } from "./InquiryForm";
 
 export function PetDetails({ pet }: { pet: Pet }) {
   const [view, setView] = useState<"details" | "form" | "success">("details");
@@ -89,6 +90,14 @@ export function PetDetails({ pet }: { pet: Pet }) {
             <DialogHeader>
               <DialogTitle>Inquiry: {pet.name}</DialogTitle>
             </DialogHeader>
+            <InquiryForm
+              petId={pet.id}
+              onSuccess={(res: InquiryResponse) => {
+                setResult(res);
+                setView("success");
+              }}
+              onCancel={() => setView("details")}
+            />
           </>
         )}
 
@@ -100,8 +109,9 @@ export function PetDetails({ pet }: { pet: Pet }) {
               src={result.imageUrl}
               className="h-24 w-24 rounded-full mx-auto object-cover"
             />
-            <div className="text-xs text-muted-foreground">
-              <p>Ref: {result.inquiryId}</p>
+            <div className="text-lg font-bold">{result.petName}</div>
+            <div className="text-sm text-muted-foreground">
+              <p>Inquiry ID: {result.inquiryId}</p>
               <p>{formatDate(result.receivedAt)}</p>
             </div>
             <Button onClick={reset} variant="outline" className="w-full">
