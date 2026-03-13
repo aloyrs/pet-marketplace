@@ -53,10 +53,8 @@ export function PetDetails({ pet }: { pet: Pet }) {
               className="w-full aspect-4/3 object-cover rounded-md"
             />
             <div className="flex justify-between items-center">
-              <DialogTitle className="text-xl font-bold">
-                {pet.name}
-              </DialogTitle>
-              <Badge variant={pet.available ? "default" : "destructive"}>
+              <DialogTitle className="text-xl">{pet.name}</DialogTitle>
+              <Badge variant={pet.available ? "available" : "destructive"}>
                 {pet.available ? "Available" : "Unavailable"}
               </Badge>
             </div>
@@ -71,7 +69,7 @@ export function PetDetails({ pet }: { pet: Pet }) {
                 Age: {pet.age_months}{" "}
                 {pet.age_months === 1 ? "month" : "months"}
               </p>
-              <p className="text-lg font-bold">${pet.price}</p>
+              <p className="text-lg">${pet.price}</p>
             </div>
             {pet.available ? (
               <Button onClick={() => setView("form")} className="w-full">
@@ -92,7 +90,7 @@ export function PetDetails({ pet }: { pet: Pet }) {
               className="w-full aspect-4/3 object-cover rounded-md"
             />
             <DialogHeader>
-              <DialogTitle className="text-xl font-bold">
+              <DialogTitle className="text-xl">
                 Inquiry form for {pet.name}
               </DialogTitle>
             </DialogHeader>

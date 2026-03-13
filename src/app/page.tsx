@@ -34,7 +34,7 @@ export default function PetPage() {
     <div className="max-w-7xl mx-auto p-6 space-y-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
-          <h1 className="text-4xl font-black">Pet Marketplace</h1>
+          <h1 className="text-4xl font-bold">Pet Marketplace</h1>
         </div>
         <div className="flex gap-3">
           <select
@@ -99,7 +99,7 @@ export default function PetPage() {
               <CardContent className="p-4 space-y-1">
                 <div className="flex justify-between items-center">
                   <CardTitle className="text-lg">{pet.name}</CardTitle>
-                  <Badge variant={pet.available ? "secondary" : "destructive"}>
+                  <Badge variant={pet.available ? "available" : "destructive"}>
                     {pet.available ? "Available" : "Unavailable"}
                   </Badge>
                 </div>
@@ -107,9 +107,9 @@ export default function PetPage() {
                   {pet.species} • {pet.size} • {pet.age_months}{" "}
                   {pet.age_months === 1 ? "month" : "months"}
                 </p>
-                <p className="font-bold">${pet.price}</p>
+                <p>${pet.price}</p>
               </CardContent>
-              <CardFooter className="p-4 pt-0">
+              <CardFooter className="p-4">
                 <PetDetails pet={pet} />
               </CardFooter>
             </Card>
