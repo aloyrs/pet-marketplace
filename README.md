@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+# How to install & run locally
 
 ```bash
+git clone https://github.com/aloyrs/pet-marketplace.git
+cd pet-marketplace
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Assumptions made
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Assumed that the primary user flow is for guests, allowing browsing and inquiries without an authorization barrier.
 
-## Learn More
+# Key tradeoffs
 
-To learn more about Next.js, take a look at the following resources:
+- Used `useState` for modal views for the details page and inquiry page (for faster development) instead of URL-based routing (which would allow users to share link to a specific pet's details or inquiry form)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Future improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Migrate more of the data fetching to Next.js Server Components to improve initial page load and SEO.
+- Include more complex data validation for inquiry form. Eg. Prevent usage of offensive language in message box.
+- Include unit testing
+- Optimise image loading by using NextJS Image component
 
-## Deploy on Vercel
+# Deployed link
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Click here -> [https://pet-market-place.vercel.app/](https://pet-market-place.vercel.app/)
