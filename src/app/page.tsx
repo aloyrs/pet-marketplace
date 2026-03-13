@@ -87,7 +87,7 @@ export default function PetPage() {
           {pets?.map((pet) => (
             <Card
               key={pet.id}
-              className={!pet.available ? "opacity-50 grayscale" : ""}
+              className={`p-0 overflow-hidden ${!pet.available ? "opacity-50 grayscale" : ""}`}
             >
               <CardHeader className="p-0">
                 <img
