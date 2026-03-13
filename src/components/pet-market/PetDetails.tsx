@@ -87,8 +87,14 @@ export function PetDetails({ pet }: { pet: Pet }) {
 
         {view === "form" && (
           <>
+            <img
+              src={pet.image_url}
+              className="w-full aspect-4/3 object-cover rounded-md"
+            />
             <DialogHeader>
-              <DialogTitle>Inquiry: {pet.name}</DialogTitle>
+              <DialogTitle className="text-xl font-bold">
+                Inquiry form for {pet.name}
+              </DialogTitle>
             </DialogHeader>
             <InquiryForm
               petId={pet.id}
@@ -107,12 +113,18 @@ export function PetDetails({ pet }: { pet: Pet }) {
             <DialogTitle>Success</DialogTitle>
             <img
               src={result.imageUrl}
-              className="h-24 w-24 rounded-full mx-auto object-cover"
+              className="h-50 w-50 rounded-full mx-auto object-cover"
             />
-            <div className="text-lg font-bold">{result.petName}</div>
-            <div className="text-sm text-muted-foreground">
-              <p>Inquiry ID: {result.inquiryId}</p>
-              <p>{formatDate(result.receivedAt)}</p>
+            <div className="space-y-1">
+              <p className="font-bold text-lg">
+                Thank you for inquiring about {result.petName}
+              </p>
+              <p className="text-sm text-muted-foreground font-mono">
+                Inquiry ID: {result.inquiryId}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {formatDate(result.receivedAt)}
+              </p>
             </div>
             <Button onClick={reset} variant="outline" className="w-full">
               Close
