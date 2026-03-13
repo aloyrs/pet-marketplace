@@ -8,7 +8,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export default function PetPage() {
-  const [filters, setFilters] = useState({ species: "", size: "" });
+  const [filters, setFilters] = useState({
+    species: "",
+    size: "",
+    available: "",
+  });
 
   const {
     data: pets,
@@ -48,6 +52,17 @@ export default function PetPage() {
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
+          </select>
+          <select
+            className="border h-9 rounded-md px-3 text-sm bg-white"
+            value={filters.available}
+            onChange={(e) =>
+              setFilters((p) => ({ ...p, available: e.target.value }))
+            }
+          >
+            <option value="">All Availability</option>
+            <option value="true">Available</option>
+            <option value="false">Unavailable</option>
           </select>
         </div>
       </div>
