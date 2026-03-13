@@ -93,11 +93,12 @@ export default function PetPage() {
                 <div className="flex justify-between items-center">
                   <CardTitle className="text-lg">{pet.name}</CardTitle>
                   <Badge variant={pet.available ? "secondary" : "destructive"}>
-                    {pet.available ? "Available" : "Sold"}
+                    {pet.available ? "Available" : "Unavailable"}
                   </Badge>
                 </div>
                 <p className="text-xs text-muted-foreground capitalize">
-                  {pet.species} • {pet.size}
+                  {pet.species} • {pet.size} • {pet.age_months}{" "}
+                  {pet.age_months === 1 ? "month" : "months"}
                 </p>
                 <p className="font-bold">${pet.price}</p>
               </CardContent>
