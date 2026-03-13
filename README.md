@@ -15,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 
 # Key tradeoffs
 
-- Used `useState` for modal views for the details page and inquiry page (for faster development) instead of URL-based routing (which would allow users to share link to a specific pet's details or inquiry form)
+- Used modal views for the details page and inquiry page (for faster development) instead of URL-based routing (which would allow users to share link to a specific pet's details or inquiry form)
 
 # Future improvements
 
