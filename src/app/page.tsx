@@ -93,7 +93,7 @@ export default function PetPage() {
                 <img
                   src={pet.image_url}
                   alt={pet.name}
-                  className="h-48 w-full object-cover rounded-t-xl"
+                  className="h-80 w-full object-cover"
                 />
               </CardHeader>
               <CardContent className="p-4 space-y-1">

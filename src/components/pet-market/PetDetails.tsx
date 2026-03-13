@@ -50,7 +50,7 @@ export function PetDetails({ pet }: { pet: Pet }) {
             <img
               src={pet.image_url}
               alt={pet.name}
-              className="w-full aspect-4/3 object-cover rounded-md"
+              className="w-full aspect-4/3 object-contain rounded-md"
             />
             <div className="flex justify-between items-center">
               <DialogTitle className="text-xl">{pet.name}</DialogTitle>
@@ -87,7 +87,7 @@ export function PetDetails({ pet }: { pet: Pet }) {
           <>
             <img
               src={pet.image_url}
-              className="w-full aspect-4/3 object-cover rounded-md"
+              className="w-full aspect-4/3 object-contain rounded-md"
             />
             <DialogHeader>
               <DialogTitle className="text-xl">
