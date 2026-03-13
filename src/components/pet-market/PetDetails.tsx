@@ -40,7 +40,7 @@ export function PetDetails({ pet }: { pet: Pet }) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-3xl">
         <DialogDescription className="sr-only">
           Details and inquiry form for {pet.name}
         </DialogDescription>
@@ -49,7 +49,7 @@ export function PetDetails({ pet }: { pet: Pet }) {
             <img
               src={pet.image_url}
               alt={pet.name}
-              className="w-full h-52 object-cover rounded-md"
+              className="w-full aspect-4/3 object-cover rounded-md"
             />
             <div className="flex justify-between items-center">
               <DialogTitle className="text-xl font-bold">
