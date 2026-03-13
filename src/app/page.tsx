@@ -4,7 +4,14 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { petService } from "@/services/petService";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { PetDetails } from "@/components/pet-market/PetDetails";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export default function PetPage() {
@@ -102,6 +109,9 @@ export default function PetPage() {
                 </p>
                 <p className="font-bold">${pet.price}</p>
               </CardContent>
+              <CardFooter className="p-4 pt-0">
+                <PetDetails pet={pet} />
+              </CardFooter>
             </Card>
           ))}
         </div>
