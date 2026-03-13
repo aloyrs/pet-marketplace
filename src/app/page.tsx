@@ -13,6 +13,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { capitalize } from "@/lib/utils";
 
 export default function PetPage() {
   const [filters, setFilters] = useState({
@@ -22,12 +23,24 @@ export default function PetPage() {
   });
 
   const {
-    data: pets,
+    data: allPets,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["pets", filters],
-    queryFn: () => petService.getPets(filters),
+    queryKey: ["pets", "all"],
+    queryFn: () => petService.getPets({}),
+  });
+
+  const uniqueSpecies = Array.from(new Set(allPets?.map((p) => p.species)));
+
+  const filteredPets = allPets?.filter((pet) => {
+    const matchesSpecies = !filters.species || pet.species === filters.species;
+    const matchesSize = !filters.size || pet.size === filters.size;
+    const matchesAvailable =
+      filters.available === "" ||
+      pet.available === (filters.available === "true");
+
+    return matchesSpecies && matchesSize && matchesAvailable;
   });
 
   return (
@@ -44,10 +57,11 @@ export default function PetPage() {
             }
           >
             <option value="">All Species</option>
-            <option value="cat">Cats</option>
-            <option value="dog">Dogs</option>
-            <option value="rabbit">Rabbits</option>
-            <option value="bird">Birds</option>
+            {uniqueSpecies.map((species) => (
+              <option key={species} value={species}>
+                {capitalize(species)}
+              </option>
+            ))}
           </select>
           <select
             className="border h-9 rounded-md px-3 text-sm"
@@ -84,7 +98,7 @@ export default function PetPage() {
         <div className="text-center py-20">Error loading data.</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pets?.map((pet) => (
+          {filteredPets?.map((pet) => (
             <Card
               key={pet.id}
               className={`p-0 overflow-hidden ${!pet.available ? "opacity-50 grayscale" : ""}`}
